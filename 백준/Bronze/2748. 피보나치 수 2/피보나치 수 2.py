@@ -2,10 +2,14 @@ import sys
 input = sys.stdin.readline
 
 def fib(n):
-    dp = [i for i in range(n+1)]
-    for i in range(2, n+1):
-        dp[i] = dp[i-1] + dp[i-2]
-    return dp[n]
+    if not n:
+        return 0
+    c = 1
+    pp, p = 0, 1
+    for _ in range(n-1):
+        c = pp + p
+        pp, p = p, c
+    return c
 
 n = int(input())
 print(fib(n))
